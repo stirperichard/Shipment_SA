@@ -18,34 +18,33 @@ import java.util.Date;
 public class Main extends JFrame {
 
     public static void main(String args[]) throws ParseException {
+
         ShipmentControl sc = new ShipmentControl();
         Shipper shipper = new Shipper("Mauro");
 
         String start_dt = "2011-01-01";
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
         Date date = (Date)formatter.parse(start_dt);
-        SimpleDateFormat newFormat = new SimpleDateFormat("MM-dd-yyyy");
-        String finalString = newFormat.format(date);
 
         Shipment shipment = new Shipment("012345", "Veroli", date, shipper, ShipmentStatus.NOT_SENT);
         sc.add_shipment(shipment);
-
-        new BoundaryShipment();
 
         try {
             /**
              *  Serializing the object
              */
-            Serializza.serialize(shipment, "serialization.txt");
+            Serializza.serialize(shipment, "serialization.dat");
 
             /**
              * Deserializing the object
              */
-            Shipment newShipment = (Shipment) Serializza.deserialize("serialization.txt");
+            Shipment newShipment = (Shipment) Serializza.deserialize("serialization.dat");
             System.out.println(newShipment.toString());
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        new BoundaryShipment();
     }
 }

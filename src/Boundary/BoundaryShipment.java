@@ -102,7 +102,7 @@ public class BoundaryShipment extends JFrame {
             panel1.setVisible(true);
             panel2.setVisible(true);
             lbl_message.setForeground(Color.GREEN);
-            lbl_message.setText("Registrazione trovata!");
+            lbl_message.setText("Spedizione trovata!");
             place_txt.setText(s.getPlace());
             date_txt.setText(String.valueOf(s.getDate_shipment()));
             shipper_txt.setText(s.getShipper().getName());
@@ -120,7 +120,9 @@ public class BoundaryShipment extends JFrame {
             }
 
         } else {
+            panel1.setVisible(false);
             panel2.setVisible(true);
+            lbl_message.setForeground(Color.RED);
             lbl_message.setText("Spedizione non trovata");
         }
     }
