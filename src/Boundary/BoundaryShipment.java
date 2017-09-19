@@ -84,7 +84,8 @@ public class BoundaryShipment extends JFrame {
     public void control_shipment() {
 
         if (ID_txt.getText().isEmpty()) {
-            lbl_message.setText("Il campo ID è vuoto o incorretto");
+            panel2.setVisible(true);
+            lbl_message.setText("Il campo ID è vuoto");
             return;
         }
 
