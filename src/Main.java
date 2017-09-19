@@ -19,6 +19,22 @@ public class Main extends JFrame {
 
     public static void main(String args[]) throws ParseException {
 
+        Shipment newShipment = null;
+        try {
+            /**
+             * Deserializing the object
+             */
+            newShipment = (Shipment) Serializza.deserialize("serialization.dat");
+            System.out.println(newShipment.toString());
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // System.out.println(newShipment.getId());  //Controllo per la deserializzazione
+
+        /** Parte sottostante attivare/disattivare per la serealizzazione */
+
         ShipmentControl sc = new ShipmentControl();
         Shipper shipper = new Shipper("Mauro");
 
@@ -35,13 +51,7 @@ public class Main extends JFrame {
              */
             Serializza.serialize(shipment, "serialization.dat");
 
-            /**
-             * Deserializing the object
-             */
-            Shipment newShipment = (Shipment) Serializza.deserialize("serialization.dat");
-            System.out.println(newShipment.toString());
-
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
